@@ -2,9 +2,7 @@ FROM odoo:18.0
 
 USER root
 
-COPY ./odoo/GeoLite2-City.mmdb /usr/share/GeoIP/GeoLite2-City.mmdb
-
-COPY ./odoo/GeoLite2-Country.mmdb /usr/share/GeoIP/GeoLite2-Country.mmdb
+COPY ./odoo/GeoLite2-*.mmdb /usr/share/GeoIP/
 
 COPY ./odoo/odoo.conf /etc/odoo/odoo.conf
 
