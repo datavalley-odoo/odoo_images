@@ -3,8 +3,9 @@ services:
     image: postgres:17.4-alpine3.21
     container_name: odoo-db
     environment:
-      POSTGRES_USER: odoo
-      POSTGRES_PASSWORD: odoo
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=Vc617eNaA0v1j6B
+      - POSTGRES_PASSWORD=RPu4Jito7ZjZWrEnDeB4dS0UxVuEIJhvMGXiXbw0Sr6uTd2Li2h7wE1YI60L6RtrsoY8h2bfjAPZ7z1nkbpeV
     volumes:
       - odoo_db_data:/var/lib/postgresql/data
     restart: unless-stopped
@@ -24,8 +25,8 @@ services:
       - odoo_addons:/mnt/extra-addons
     environment:
       - HOST=db
-      - USER=odoo
-      - PASSWORD=odoo
+      - USER=Vc617eNaA0v1j6B
+      - PASSWORD=RPu4Jito7ZjZWrEnDeB4dS0UxVuEIJhvMGXiXbw0Sr6uTd2Li2h7wE1YI60L6RtrsoY8h2bfjAPZ7z1nkbpeV
     restart: unless-stopped
 
 volumes:
