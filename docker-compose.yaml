@@ -4,6 +4,9 @@ services:
       context: .
       dockerfile: Dockerfile
     restart: always
+    ports:
+      - "8069:8069"
+      - "8072:8072"
     depends_on:
       - "database"
     networks:
