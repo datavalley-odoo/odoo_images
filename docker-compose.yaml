@@ -1,35 +1,57 @@
 services:
-  db:
-    image: postgres:17.4-alpine3.21
-    container_name: odoo-db
-    environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=Vc617eNaA0v1j6B
-      - POSTGRES_PASSWORD=RPu4Jito7ZjZWrEnDeB4dS0UxVuEIJhvMGXiXbw0Sr6uTd2Li2h7wE1YI60L6RtrsoY8h2bfjAPZ7z1nkbpeV
-    volumes:
-      - odoo_db:/var/lib/postgresql/data
-    restart: unless-stopped
-
-  web:
+  odoo:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: odoo-web
+    restart: always
     depends_on:
-      - db
-    ports:
-      - "8069:8069"
-      - "8072:8072"
+      - "database"
+    networks:
+      - "odoo"
     volumes:
-      - odoo_filestore:/var/lib/odoo
-      - odoo_addons:/mnt/extra-addons
+      - "addons:/mnt/extra-addons"
+      - "filestore:/var/lib/odoo"
     environment:
-      - HOST=db
-      - USER=Vc617eNaA0v1j6B
-      - PASSWORD=RPu4Jito7ZjZWrEnDeB4dS0UxVuEIJhvMGXiXbw0Sr6uTd2Li2h7wE1YI60L6RtrsoY8h2bfjAPZ7z1nkbpeV
-    restart: unless-stopped
+      - "PORT=1002"
+      - "HOST=database"
+      - "USER=Vc617eNaA0v1j6B"
+      - "PASSWORD=RPu4Jito7ZjZWrEnDeB4dS0UxVuEIJhvMGXiXbw0Sr6uTd2Li2h7wE1YI60L6RtrsoY8h2bfjAPZ7z1nkbpeV"
+
+  database:
+    image: postgres:17.4-alpine3.21
+    restart: always
+    networks:
+      - "odoo"
+    volumes:
+      - "database:/var/lib/postgresql/data"
+    environment:
+      - "PGPORT=1002"
+      - "POSTGRES_DB=postgres"
+      - "PGDATA=/var/lib/postgresql/data"
+      - "POSTGRES_USER=Vc617eNaA0v1j6B"
+      - "POSTGRES_PASSWORD=RPu4Jito7ZjZWrEnDeB4dS0UxVuEIJhvMGXiXbw0Sr6uTd2Li2h7wE1YI60L6RtrsoY8h2bfjAPZ7z1nkbpeV"
+    command: [
+    "postgres",
+    "-c", "max_connections=512",
+    "-c", "shared_buffers=1GB",
+    "-c", "effective_cache_size=2GB",
+    "-c", "maintenance_work_mem=256MB",
+    "-c", "checkpoint_completion_target=0.9",
+    "-c", "wal_buffers=16MB",
+    "-c", "default_statistics_target=100",
+    "-c", "random_page_cost=1.1",
+    "-c", "effective_io_concurrency=200",
+    "-c", "work_mem=4MB",
+    "-c", "huge_pages=off",
+    "-c", "min_wal_size=1GB",
+    "-c", "max_wal_size=2GB"
+    ]
 
 volumes:
-  odoo_db:
-  odoo_filestore:
-  odoo_addons:
+  database:
+  filestore:
+  addons:
+
+networks:
+  odoo:
+    driver: bridge
