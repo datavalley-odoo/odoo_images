@@ -1,0 +1,33 @@
+services:
+  db:
+    image: postgres:17.4-alpine3.21
+    container_name: odoo-db
+    environment:
+      POSTGRES_DB: odoo
+      POSTGRES_USER: odoo
+      POSTGRES_PASSWORD: odoo
+    volumes:
+      - odoo_db_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: odoo-web
+    depends_on:
+      - db
+    ports:
+      - "1000:1000"
+      - "1001:1001"
+    volumes:
+      - odoo_filestore:/var/lib/odoo
+    environment:
+      - HOST=db
+      - USER=odoo
+      - PASSWORD=odoo
+    restart: unless-stopped
+
+volumes:
+  odoo_db_data:
+  odoo_filestore:

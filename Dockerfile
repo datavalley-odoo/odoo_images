@@ -8,6 +8,8 @@ COPY ./odoo/odoo.conf /etc/odoo/odoo.conf
 
 COPY ./extra-addons /mnt/extra-addons
 
+VOLUME []
+
 RUN chown -R odoo:odoo /usr/share/GeoIP /etc/odoo /mnt/extra-addons
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
