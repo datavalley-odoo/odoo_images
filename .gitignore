@@ -1,0 +1,13 @@
+# Ignore Python bytecode files
+__pycache__
+
+# Ignore Odoo log files
+*.log
+
+# Ignore virtual environment directories
+venv/
+*.virtualenv/
+
+# Ignore PyCharm and VSCode project files
+.vscode/
+.idea/
