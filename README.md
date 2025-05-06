@@ -1,1 +1,4 @@
-# odoo_images
+Adsmin Password
+```
+O7eRr6ZpFezFoDsI
+```
