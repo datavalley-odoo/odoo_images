@@ -6,9 +6,7 @@ COPY ./odoo/GeoLite2-*.mmdb /usr/share/GeoIP/
 
 COPY ./odoo/odoo.conf /etc/odoo/odoo.conf
 
-COPY ./extra-addons /mnt/extra-addons
-
-VOLUME []
+COPY ./addons /mnt/addons
 
 RUN chown -R odoo:odoo /usr/share/GeoIP /etc/odoo /mnt/extra-addons
 
@@ -24,5 +22,3 @@ RUN python3 -m pip install --no-cache-dir --upgrade --ignore-installed --break-s
     openpyxl ebaysdk firebase-admin pdfminer.six qrcode astor email_validator asana \
     pandas pyOpenSSL dropbox pyncclient nextcloud-api-wrapper paramiko geoip2 boto3 \
     lxml_html_clean python-barcode
-
-EXPOSE 1000 1001
