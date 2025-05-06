@@ -1,5 +1,7 @@
 FROM odoo:18.0
 
+LABEL build.name="odoo" build.version="18.0" maintainer="mail@josecgeo.com"
+
 USER root
 
 COPY ./odoo/GeoLite2-*.mmdb /usr/share/GeoIP/
