@@ -32,3 +32,4 @@ services:
 volumes:
   odoo_db_data:
   odoo_filestore:
+  odoo_addons:
