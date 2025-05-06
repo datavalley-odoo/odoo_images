@@ -3,7 +3,6 @@ services:
     image: postgres:17.4-alpine3.21
     container_name: odoo-db
     environment:
-      POSTGRES_DB: odoo
       POSTGRES_USER: odoo
       POSTGRES_PASSWORD: odoo
     volumes:
