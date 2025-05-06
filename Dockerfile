@@ -2,17 +2,15 @@ FROM odoo:18.0
 
 LABEL build.name="odoo" build.version="18.0"
 
-EXPOSE 8069 8072
-
 USER root
+
+RUN mkdir -p /mnt/1st-party /mnt/2nd-party /mnt/3rd-party
 
 COPY ./odoo/GeoLite2-*.mmdb /usr/share/GeoIP/
 
 COPY ./odoo/odoo.conf /etc/odoo/odoo.conf
 
 COPY ./extra-addons /mnt/extra-addons
-
-RUN chown -R odoo:odoo /usr/share/GeoIP /etc/odoo /mnt/extra-addons
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     curl nano pkg-config gsfonts build-essential libcairo2-dev python3-pip python3-cairo \
