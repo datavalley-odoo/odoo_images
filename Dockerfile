@@ -17,10 +17,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN python3 -m pip install --no-cache-dir --upgrade --ignore-installed --break-system-packages \
-    setuptools wheel
-
-RUN python3 -m pip install --no-cache-dir --upgrade --ignore-installed --break-system-packages \
-    pip
+    setuptools wheel pip
 
 RUN python3 -m pip install --no-cache-dir --upgrade --ignore-installed --break-system-packages \
     gdown dbfread ofxparse pyzk PyJWT google-auth num2words phonenumbers reportlab \
