@@ -1,6 +1,8 @@
 FROM odoo:18.0
 
-LABEL build.name="odoo" build.version="18.0" maintainer="mail@josecgeo.com"
+LABEL build.name="odoo" build.version="18.0"
+
+EXPOSE 8069 8072
 
 USER root
 
