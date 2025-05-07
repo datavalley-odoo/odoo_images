@@ -57,4 +57,3 @@ volumes:
 
 networks:
   odoo:
-    driver: bridge
