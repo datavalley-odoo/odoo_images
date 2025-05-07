@@ -10,26 +10,26 @@ services:
     depends_on:
       - "database"
     networks:
-      - "odoo"
+      - odoo-net
     volumes:
-      - "addons:/mnt/extra-addons"
-      - "filestore:/var/lib/odoo"
+      - addons:/mnt/extra-addons
+      - filestore:/var/lib/odoo
     environment:
-      - "HOST=database"
-      - "USER=Vc617eNaA0v1j6B"
-      - "PASSWORD=Vc617eNaA0v1j6B"
+      - HOST=database
+      - USER=Vc617eNaA0v1j6B
+      - PASSWORD=Vc617eNaA0v1j6B
 
   database:
     image: postgres:17.4-alpine3.21
     restart: always
     networks:
-      - "odoo"
+      - odoo-net
     volumes:
-      - "database:/var/lib/postgresql/data"
+      - database:/var/lib/postgresql/data
     environment:
-      - "POSTGRES_DB=postgres"
-      - "POSTGRES_USER=Vc617eNaA0v1j6B"
-      - "POSTGRES_PASSWORD=Vc617eNaA0v1j6B"
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=Vc617eNaA0v1j6B
+      - POSTGRES_PASSWORD=Vc617eNaA0v1j6B
 
 volumes:
   database:
@@ -37,4 +37,5 @@ volumes:
   addons:
 
 networks:
-  odoo:
+  odoo-net:
+    driver: bridge
