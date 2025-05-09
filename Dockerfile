@@ -24,7 +24,7 @@ RUN python3 -m pip install --no-cache-dir --upgrade --ignore-installed --break-s
     setuptools wheel pip
 
 RUN python3 -m pip install --no-cache-dir --upgrade --ignore-installed --break-system-packages \
-    gdown dbfread ofxparse pyzk pyOpenSSL google-auth num2words phonenumbers reportlab  \
-    lxml_html_clean firebase-admin ebaysdk qrcode astor asana openpyxl email_validator   \
-    PyJWT dropbox pyncclient nextcloud-api-wrapper paramiko geoip2 python-barcode pandas \
-    pdfminer.six six 'boto3<=1.15.18'
+    gdown dbfread ofxparse pyzk pyOpenSSL google-auth num2words phonenumbers reportlab \
+    lxml_html_clean firebase-admin ebaysdk qrcode astor asana openpyxl email_validator \
+    pyncclient nextcloud-api-wrapper paramiko geoip2 python-barcode six pandas dropbox \
+    PyJWT pdfminer.six 'boto3<=1.15.18'
