@@ -1,5 +1,7 @@
 FROM odoo:18.0
 
+USER root
+
 LABEL build.name="odoo" build.version="18.0"
 
 RUN mkdir -p /mnt/1st-party /mnt/2nd-party /mnt/3rd-party
@@ -10,7 +12,7 @@ COPY ./odoo/odoo.conf /etc/odoo/odoo.conf
 
 COPY ./extra-addons /mnt/extra-addons
 
-RUN chown -R odoo:odoo /usr/share/GeoIP /etc/odoo /mnt/extra-addons
+RUN chown -R odoo:odoo /usr/share/GeoIP /etc/odoo /mnt/extra-addons /mnt/1st-party /mnt/2nd-party /mnt/3rd-party
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     curl nano pkg-config gsfonts build-essential libcairo2-dev python3-pip python3-cairo \
