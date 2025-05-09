@@ -26,5 +26,5 @@ RUN python3 -m pip install --no-cache-dir --upgrade --ignore-installed --break-s
 RUN python3 -m pip install --no-cache-dir --upgrade --ignore-installed --break-system-packages \
     gdown dbfread ofxparse pyzk pyOpenSSL google-auth num2words phonenumbers reportlab  \
     lxml_html_clean firebase-admin ebaysdk qrcode astor asana openpyxl email_validator  \
-    PyJWT dropbox pyncclient nextcloud-api-wrapper paramiko geoip2 boto3 python-barcode \
-    boto3<=1.15.18  pdfminer.six pandas
+    PyJWT dropbox pyncclient nextcloud-api-wrapper paramiko geoip2 python-barcode pandas \
+    boto3<=1.15.18 pdfminer.six
