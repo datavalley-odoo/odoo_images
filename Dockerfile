@@ -14,6 +14,8 @@ COPY ./extra-addons /mnt/extra-addons
 
 RUN chown -R odoo:odoo /usr/share/GeoIP /etc/odoo /mnt/extra-addons /mnt/1st-party /mnt/2nd-party /mnt/3rd-party
 
+RUN chmod -R 755 /usr/share/GeoIP /etc/odoo /mnt/extra-addons /mnt/1st-party /mnt/2nd-party /mnt/3rd-party
+
 RUN apt-get update && apt-get install -y --no-install-recommends \
     curl nano pkg-config gsfonts build-essential libcairo2-dev python3-pip python3-cairo \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
