@@ -8,7 +8,7 @@ RUN mkdir -p /mnt/1st-party /mnt/2nd-party /mnt/3rd-party
 
 COPY ./odoo/GeoLite2-*.mmdb /usr/share/GeoIP/
 
-COPY COPY ./odoo/odoo.conf /etc/odoo/
+COPY ./odoo/odoo.conf /etc/odoo/
 
 COPY ./extra-addons /mnt/extra-addons
 
